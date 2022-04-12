@@ -12,7 +12,7 @@ import com.algaworks.algafood.di.service.ClienteAtivadoEvent;
 @Component
 public class NotificacaoService {
 
-	@TipoDoNotificador(NivelUrgencia.URGENTE)
+	@TipoDoNotificador(NivelUrgencia.SEM_URGENCIA)
 	@Autowired
 	private INotificador notificador;
 

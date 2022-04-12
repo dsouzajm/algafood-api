@@ -8,22 +8,18 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
 import com.algaworks.algafood.di.modelo.Cliente;
-import com.algaworks.algafood.di.notificacao.INotificador;
-import com.algaworks.algafood.di.notificacao.NivelUrgencia;
-import com.algaworks.algafood.di.notificacao.TipoDoNotificador;
-
 
 @Component
 public class AtivacaoClienteService {
 
-	//@TipoDoNotificador(NivelUrgencia.URGENTE)
-	//@Qualifier("urgente")
-	//@Autowired
-	//private INotificador notificador;
-	
+	// @TipoDoNotificador(NivelUrgencia.URGENTE)
+	// @Qualifier("urgente")
+	// @Autowired
+	// private INotificador notificador;
+
 	@Autowired
 	private ApplicationEventPublisher eventPublisher;
-	
+
 //	@TipoDoNotificador(NivelUrgencia.SEM_URGENCIA)
 //	@Autowired
 //	public AtivacaoClienteService() {	
@@ -32,22 +28,22 @@ public class AtivacaoClienteService {
 //		System.out.println("AtivacaoClienteService: " + notificador);
 //	}
 
-	public void ativar(Cliente cliente) {		
+	public void ativar(Cliente cliente) {
 		cliente.ativar();
-		
+
 		eventPublisher.publishEvent(new ClienteAtivadoEvent(cliente));
-		
-		//notificador.notificar(cliente, "Seu cadastro no sistema está ativo!");
+
+		// notificador.notificar(cliente, "Seu cadastro no sistema está ativo!");
 	}
-	
+
 	@PostConstruct
-	public void init() {		
+	public void init() {
 		System.out.println("init()");
 	}
 
 	@PreDestroy
-	public void destroy() {		
+	public void destroy() {
 		System.out.println("destroy()");
 	}
-	
+
 }
