@@ -1,5 +1,6 @@
 package com.algaworks.algafood.di.notificacao;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -11,9 +12,22 @@ import com.algaworks.algafood.di.modelo.Cliente;
 @Component
 public class NotificadorEmailMock implements INotificador{
 	
+	@Autowired
+	private NotificaoProperties notificacaoProperties;
+
+	// @Value("${notificador.email.host-servidor}")
+
+	private String nomeServidor;
+
+	// @Value("${notificador.email.porta-servidor}")
+	private Integer portaServidor;	
+	
 	@Override
-	public void notificar(Cliente cliente, String mensagem) {
-				
+	public void notificar(Cliente cliente, String mensagem) {				
+		
+		System.out.println("Nome do servidor de email: " + notificacaoProperties.getHostServidor());
+		System.out.println("Porta do servidor de email: " + notificacaoProperties.getPortaServidor());
+		
 		System.out.printf("Seria enviado uma notificacao %s através do e-mail %s: %s\n"
 				, cliente.getNome(), cliente.getEmail(), mensagem);
 	}
