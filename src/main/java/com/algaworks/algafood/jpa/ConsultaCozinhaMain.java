@@ -12,7 +12,7 @@ import com.algaworks.algafood.domain.model.Cozinha;
 public class ConsultaCozinhaMain {
 	
 	public static void main(String[] args) {
-		/*ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiApplication.class)
+		ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiApplication.class)
 				.web(WebApplicationType.NONE)
 				.run(args);
 		
@@ -21,7 +21,7 @@ public class ConsultaCozinhaMain {
 		
 		for(Cozinha cozinha: cozinhas) {
 			System.out.println("Cozinhas: " + cozinha.getNome());
-		}*/
+		}
 	}
 
 }
