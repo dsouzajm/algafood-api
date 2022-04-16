@@ -12,28 +12,13 @@ import com.algaworks.algafood.di.modelo.Cliente;
 @Component
 public class AtivacaoClienteService {
 
-	// @TipoDoNotificador(NivelUrgencia.URGENTE)
-	// @Qualifier("urgente")
-	// @Autowired
-	// private INotificador notificador;
-
 	@Autowired
 	private ApplicationEventPublisher eventPublisher;
-
-//	@TipoDoNotificador(NivelUrgencia.SEM_URGENCIA)
-//	@Autowired
-//	public AtivacaoClienteService() {	
-//		this.notificador = notificador;
-//		
-//		System.out.println("AtivacaoClienteService: " + notificador);
-//	}
 
 	public void ativar(Cliente cliente) {
 		cliente.ativar();
 
 		eventPublisher.publishEvent(new ClienteAtivadoEvent(cliente));
-
-		// notificador.notificar(cliente, "Seu cadastro no sistema está ativo!");
 	}
 
 	@PostConstruct

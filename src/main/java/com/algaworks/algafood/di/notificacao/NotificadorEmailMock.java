@@ -8,19 +8,11 @@ import com.algaworks.algafood.di.modelo.Cliente;
 
 @Profile("dev")
 @TipoDoNotificador(NivelUrgencia.SEM_URGENCIA)
-//@Qualifier("normal")
 @Component
 public class NotificadorEmailMock implements INotificador{
 	
 	@Autowired
 	private NotificaoProperties notificacaoProperties;
-
-	// @Value("${notificador.email.host-servidor}")
-
-	private String nomeServidor;
-
-	// @Value("${notificador.email.porta-servidor}")
-	private Integer portaServidor;	
 	
 	@Override
 	public void notificar(Cliente cliente, String mensagem) {				
@@ -29,7 +21,9 @@ public class NotificadorEmailMock implements INotificador{
 		System.out.println("Porta do servidor de email: " + notificacaoProperties.getPortaServidor());
 		
 		System.out.printf("Seria enviado uma notificacao %s através do e-mail %s: %s\n"
-				, cliente.getNome(), cliente.getEmail(), mensagem);
+							, cliente.getNome()
+							, cliente.getEmail()
+							, mensagem);
 	}
 
 }
