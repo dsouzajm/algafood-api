@@ -9,7 +9,7 @@ import org.springframework.context.ApplicationContext;
 import com.algaworks.algafood.AlgafoodApiApplication;
 import com.algaworks.algafood.domain.model.Cozinha;
 
-public class ConsultaCozinhaMain {
+public class AdicaoCozinhaMain {
 	
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiApplication.class)
@@ -24,17 +24,13 @@ public class ConsultaCozinhaMain {
 		Cozinha cozinha2 = new Cozinha();
 		cozinha2.setNome("Cozinha adicionada 2");
 		
-		cadastroCozinha.salvar(cozinha1);
+		Cozinha cozinhaAdicionada = cadastroCozinha.salvar(cozinha1);
 		cadastroCozinha.salvar(cozinha2);
+				
+		cozinhaAdicionada.setNome("Cozinha adicionada 1 (alterada)");
+		cozinhaAdicionada = cadastroCozinha.salvar(cozinhaAdicionada);
 		
-		List<Cozinha> cozinhas = cadastroCozinha.listar();
-		
-		for(Cozinha cozinha: cozinhas) {
-			System.out.println("Cozinha ID: " + cozinha.getNome() + ", Cozinha Nome: " + cozinha.getNome());
-		}
-		
-		Cozinha cozinhaPorID = cadastroCozinha.buscar(2L);
-		System.out.println("Cozinha por ID: " + cozinhaPorID.getNome());
+		System.out.println(cozinhaAdicionada.getId() + cozinhaAdicionada.getNome());				
 	}
 
 }
