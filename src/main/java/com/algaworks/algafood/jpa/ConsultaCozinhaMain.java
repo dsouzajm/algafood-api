@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.algaworks.algafood.AlgafoodApiApplication;
 import com.algaworks.algafood.domain.model.Cozinha;
+import com.algaworks.algafood.domain.model.repository.CozinhaRepository;
 
 public class ConsultaCozinhaMain {
 	
@@ -16,7 +17,7 @@ public class ConsultaCozinhaMain {
 				.web(WebApplicationType.NONE)
 				.run(args);
 		
-		CadastroCozinha cadastroCozinha = applicationContext.getBean(CadastroCozinha.class);
+		CozinhaRepository cozinhaRepository = applicationContext.getBean(CozinhaRepository.class);
 		
 		Cozinha cozinha1 = new Cozinha();
 		cozinha1.setNome("Cozinha adicionada 1");
@@ -24,17 +25,18 @@ public class ConsultaCozinhaMain {
 		Cozinha cozinha2 = new Cozinha();
 		cozinha2.setNome("Cozinha adicionada 2");
 		
-		cadastroCozinha.salvar(cozinha1);
-		cadastroCozinha.salvar(cozinha2);
+		cozinhaRepository.salvar(cozinha1);
+		cozinhaRepository.salvar(cozinha2);
 		
-		List<Cozinha> cozinhas = cadastroCozinha.listar();
+		List<Cozinha> cozinhas = cozinhaRepository.listar();
 		
 		for(Cozinha cozinha: cozinhas) {
-			System.out.println("Cozinha ID: " + cozinha.getNome() + ", Cozinha Nome: " + cozinha.getNome());
+			System.out.println("Cozinha ID: " + cozinha.getId() + ", Cozinha Nome: " + cozinha.getNome());
 		}
 		
-		Cozinha cozinhaPorID = cadastroCozinha.buscar(2L);
-		System.out.println("Cozinha por ID: " + cozinhaPorID.getNome());
+		Cozinha cozinhaPorID = cozinhaRepository.buscar(2L);
+		System.out.println("==============CozinhaRepository==============");
+		System.out.println("Cozinha ID: " + cozinhaPorID.getId() + ", Cozinha Nome: " + cozinhaPorID.getNome());
 	}
 
 }

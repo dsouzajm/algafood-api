@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.algaworks.algafood.AlgafoodApiApplication;
 import com.algaworks.algafood.domain.model.Cozinha;
+import com.algaworks.algafood.domain.model.repository.CozinhaRepository;
 
 public class ExclusaoCozinhaMain {
 	
@@ -16,17 +17,17 @@ public class ExclusaoCozinhaMain {
 				.web(WebApplicationType.NONE)
 				.run(args);
 		
-		CadastroCozinha cadastroCozinha = applicationContext.getBean(CadastroCozinha.class);
+		CozinhaRepository cozinhaRepository = applicationContext.getBean(CozinhaRepository.class);
 		
-		List<Cozinha> cozinhas = cadastroCozinha.listar();
+		List<Cozinha> cozinhas = cozinhaRepository.listar();
 		
 		for(Cozinha cozinha: cozinhas) {
 			System.out.println("Cozinha ID: " + cozinha.getNome() + ", Cozinha Nome: " + cozinha.getNome());
 		}		
 					
-		cadastroCozinha.remover(cadastroCozinha.buscar(1L));
+		cozinhaRepository.remover(cozinhaRepository.buscar(1L));
 		
-		cozinhas = cadastroCozinha.listar();
+		cozinhas = cozinhaRepository.listar();
 		
 		for(Cozinha cozinha: cozinhas) {
 			System.out.println("Cozinha ID: " + cozinha.getNome() + ", Cozinha Nome: " + cozinha.getNome());
