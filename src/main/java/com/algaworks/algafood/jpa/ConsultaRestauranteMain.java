@@ -21,7 +21,7 @@ public class ConsultaRestauranteMain {
 		
 		RestauranteRepository restauranteRepository = applicationContext.getBean(RestauranteRepository.class);
 		
-		Restaurante restaurante1 = new Restaurante();
+		/*Restaurante restaurante1 = new Restaurante();
 		restaurante1.setNome("Restaurante adicionado 1");
 		restaurante1.setTaxaFrete(new BigDecimal(8));
 
@@ -30,14 +30,16 @@ public class ConsultaRestauranteMain {
 		restaurante2.setTaxaFrete(new BigDecimal(5));
 		
 		restauranteRepository.salvar(restaurante1);
-		restauranteRepository.salvar(restaurante2);
+		restauranteRepository.salvar(restaurante2);*/
 		
 		List<Restaurante> restaurantes = restauranteRepository.listar();
 		
+		System.out.println("==============Query==============");
 		for(Restaurante restaurante: restaurantes) {
 			System.out.println("Restaurante ID: " + restaurante.getId() + 
 				", Restaurante Nome: " + restaurante.getNome() +
-				", Restaurante Taxa Frete: " + restaurante.getTaxaFrete()
+				", Restaurante Taxa Frete: " + restaurante.getTaxaFrete() + 
+				", Restaurante Cozinha ID: " + restaurante.getCozinha().getNome()
 			);
 		}
 		
@@ -45,7 +47,8 @@ public class ConsultaRestauranteMain {
 		System.out.println("==============RestauranteRepository==============");
 		System.out.println("Restaurante ID: " + restaurantePorID.getId() + 
 			", Restaurante Nome: " + restaurantePorID.getNome() +
-			", Restaurante Taxa Frete: " + restaurantePorID.getTaxaFrete()
+			", Restaurante Taxa Frete: " + restaurantePorID.getTaxaFrete() +
+			", Restaurante Cozinha ID: " + restaurantePorID.getCozinha().getNome()
 		);
 	}
 
