@@ -11,16 +11,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+//@Table(name = "formaPagamento1")
 @Getter
 @Setter
 @EqualsAndHashCode
-public class Cozinha {
+public class FormaPagamento {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private Long id;
-
+	
 	@EqualsAndHashCode.Exclude
 	@Column(nullable = false)
-	private String nome;
+	private String descricao;
 }

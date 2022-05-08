@@ -7,8 +7,8 @@ import com.algaworks.algafood.domain.model.Restaurante;
 
 public interface RestauranteRepository {
 	
-	public Restaurante salvar(Restaurante restaurante);
+	public Restaurante buscar(Long id);
 	public List<Restaurante> listar();
-	public void remover(Restaurante cozinha);
-	public Restaurante buscar(Long id);	
+	public Restaurante salvar(Restaurante restaurante);	
+	public void remover(Restaurante cozinha);		
 }
