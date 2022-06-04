@@ -8,7 +8,6 @@ import org.springframework.context.ApplicationContext;
 
 import com.algaworks.algafood.AlgafoodApiApplication;
 import com.algaworks.algafood.domain.model.Estado;
-import com.algaworks.algafood.domain.model.Permissao;
 import com.algaworks.algafood.domain.model.repository.EstadoRepository;
 
 public class ConsultaEstadoMain {

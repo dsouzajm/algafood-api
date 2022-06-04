@@ -1,6 +1,5 @@
 package com.algaworks.algafood.jpa;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.boot.WebApplicationType;
@@ -8,7 +7,6 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 
 import com.algaworks.algafood.AlgafoodApiApplication;
-import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.model.Restaurante;
 import com.algaworks.algafood.domain.model.repository.RestauranteRepository;
 

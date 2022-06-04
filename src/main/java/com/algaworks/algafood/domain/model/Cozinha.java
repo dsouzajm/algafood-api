@@ -26,7 +26,7 @@ public class Cozinha {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@JsonProperty("titulo")
+	//@JsonProperty("titulo")
 	@EqualsAndHashCode.Exclude
 	@Column(nullable = false)
 	private String nome;

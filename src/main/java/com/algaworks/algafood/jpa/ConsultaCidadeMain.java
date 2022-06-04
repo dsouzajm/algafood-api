@@ -21,7 +21,6 @@ public class ConsultaCidadeMain {
 		CidadeRepository cidadeRepository = applicationContext.getBean(CidadeRepository.class);
 		
 		Cidade cidade1 = new Cidade();
-		Cidade cidade2 = new Cidade();
 		
 		Estado estado1 = new Estado();
 		estado1.setId(1L);
