@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.algaworks.algafood.AlgafoodApiApplication;
 import com.algaworks.algafood.domain.model.Permissao;
-import com.algaworks.algafood.domain.model.repository.PermissaoRepository;
+import com.algaworks.algafood.domain.repository.PermissaoRepository;
 
 public class ConsultaPermissaoMain {
 	

@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.algaworks.algafood.AlgafoodApiApplication;
 import com.algaworks.algafood.domain.model.Estado;
-import com.algaworks.algafood.domain.model.repository.EstadoRepository;
+import com.algaworks.algafood.domain.repository.EstadoRepository;
 
 public class ConsultaEstadoMain {
 	

@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Component;
 
 import com.algaworks.algafood.domain.model.Cidade;
-import com.algaworks.algafood.domain.model.repository.CidadeRepository;
+import com.algaworks.algafood.domain.repository.CidadeRepository;
 
 @Component
 public class CidadeRepositoyImpl implements CidadeRepository {

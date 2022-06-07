@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.algaworks.algafood.AlgafoodApiApplication;
 import com.algaworks.algafood.domain.model.Restaurante;
-import com.algaworks.algafood.domain.model.repository.RestauranteRepository;
+import com.algaworks.algafood.domain.repository.RestauranteRepository;
 
 public class ConsultaRestauranteMain {
 	

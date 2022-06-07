@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Component;
 
 import com.algaworks.algafood.domain.model.Permissao;
-import com.algaworks.algafood.domain.model.repository.PermissaoRepository;
+import com.algaworks.algafood.domain.repository.PermissaoRepository;
 
 @Component
 public class PermissaoRepositoyImpl implements PermissaoRepository {

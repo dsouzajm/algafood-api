@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.algaworks.algafood.AlgafoodApiApplication;
 import com.algaworks.algafood.domain.model.FormaPagamento;
-import com.algaworks.algafood.domain.model.repository.FormaPagamentoRepository;
+import com.algaworks.algafood.domain.repository.FormaPagamentoRepository;
 
 public class ConsultaFormaPagamentoMain {
 	
