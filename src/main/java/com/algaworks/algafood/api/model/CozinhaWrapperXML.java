@@ -11,7 +11,7 @@ import lombok.Data;
 import lombok.NonNull;
 
 //@JacksonXmlRootElement(localName = "cozinhas")
-//@Data
+@Data
 public class CozinhaWrapperXML {
 
 	//@JacksonXmlProperty(localName = "cozinha")
