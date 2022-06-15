@@ -53,7 +53,7 @@ public class RestauranteController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Restaurante> adicionar(@RequestBody Restaurante restaurante) {
+	public ResponseEntity<?> adicionar(@RequestBody Restaurante restaurante) {
 
 		try {
 			
@@ -61,12 +61,13 @@ public class RestauranteController {
 					, HttpStatus.CREATED);						
 		} catch (EntidadeNaoEncontradaException e) {
 		
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();		
+			
+			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Restaurante> excluir(@PathVariable Long id) {
+	public ResponseEntity<?> excluir(@PathVariable Long id) {
 		
 		try {
 			
@@ -74,7 +75,7 @@ public class RestauranteController {
 			return new ResponseEntity<Restaurante>(HttpStatus.OK);
 		} catch (EntidadeNaoEncontradaException e) {
 			
-			return new ResponseEntity<Restaurante>(HttpStatus.NOT_FOUND);
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 	}
 }
