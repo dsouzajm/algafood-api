@@ -53,7 +53,7 @@ public class CozinhaController {
 			return ResponseEntity.ok(cozinha);
 		}
 		
-		return ResponseEntity.notFound().build();		
+		return ResponseEntity.noContent().build();		
 	}
 	
 	@GetMapping("/nao_existe")
@@ -73,16 +73,17 @@ public class CozinhaController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Cozinha> atualizar(@PathVariable Long id, @RequestBody Cozinha cozinha){
+	public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody Cozinha cozinha){
 		
-		Cozinha cozinhaAtual = cadastroCozinhaService.atualizar(id, cozinha);
-		
-		if(cozinhaAtual != null) {
+		try {
 			
+			Cozinha cozinhaAtual = cadastroCozinhaService.atualizar(id, cozinha);
 			return ResponseEntity.ok(cozinhaAtual);
-		}
+			
+		} catch (EntidadeNaoEncontradaException e) {
 		
-		return ResponseEntity.notFound().build();		
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+		}
 	}
 	
 	@DeleteMapping("/{id}")
@@ -96,7 +97,7 @@ public class CozinhaController {
 		} catch (EntidadeNaoEncontradaException e) {
 			
 			System.out.println(e);
-			return ResponseEntity.notFound().build();
+			return ResponseEntity.notFound().build();	
 			
 		} catch (EntidadeEmUsoException e) {
 			

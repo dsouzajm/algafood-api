@@ -52,9 +52,13 @@ public class CadastroCozinhaService {
 			cozinhaAtual = cozinhaRepository.salvar(cozinhaAtual);
 
 			return cozinhaAtual;
+		} else {
+			
+			throw new EntidadeNaoEncontradaException(
+				String.format("Não existe cozinha com o código %d.", id)
+				);
+			
 		}
-
-		return null;
 	}
 
 	public void excluir(Long id) {
@@ -65,13 +69,13 @@ public class CadastroCozinhaService {
 		} catch (DataIntegrityViolationException e) {
 
 			throw new EntidadeEmUsoException(
-				String.format("Cozinha de código %d não pode ser removida, pois está em uso", id)				
+				String.format("Cozinha de código %d não pode ser removida, pois está em uso.", id)				
 			);
 			
 		} catch (EmptyResultDataAccessException e) {
 
 			throw new EntidadeNaoEncontradaException(
-				String.format("Não existe um cadastro de cozinha com código %d", id)			
+				String.format("Não existe cozinha com o código %d.", id)			
 			);
 		} 
 	}

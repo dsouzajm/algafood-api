@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
+import com.algaworks.algafood.domain.exception.PropriedadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Restaurante;
 import com.algaworks.algafood.domain.service.CadastroRestauranteService;
 
@@ -35,20 +36,33 @@ public class RestauranteController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Restaurante> buscar(@PathVariable Long id) {
 
-		return new ResponseEntity<Restaurante>(cadastroRestauranteService.buscar(id)
-				, HttpStatus.OK);
+		try {
+			
+			Restaurante restaurante = cadastroRestauranteService.buscar(id);		
+			return new ResponseEntity<Restaurante>(restaurante, HttpStatus.OK);
+	
+		} catch (EntidadeNaoEncontradaException e) {
+			
+			return new ResponseEntity<Restaurante>(HttpStatus.NO_CONTENT);
+		}
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Restaurante> atualizar(@PathVariable Long id, @RequestBody Restaurante restaurante) {
+	public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody Restaurante restaurante) {
 
 		try {
 			
-			return new ResponseEntity<Restaurante>(cadastroRestauranteService.atualizar(id, restaurante)
-					, HttpStatus.OK);			
-		} catch (Exception e) {
+			return new ResponseEntity<Restaurante>(
+					cadastroRestauranteService.atualizar(id, restaurante)
+					, HttpStatus.OK);
 			
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		} catch (PropriedadeNaoEncontradaException e) {
+			
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+			
+		} catch (EntidadeNaoEncontradaException e) {
+			
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());			
 		}
 	}
 
@@ -59,9 +73,8 @@ public class RestauranteController {
 			
 			return new ResponseEntity<Restaurante>(cadastroRestauranteService.adicionar(restaurante)
 					, HttpStatus.CREATED);						
-		} catch (EntidadeNaoEncontradaException e) {
+		} catch (PropriedadeNaoEncontradaException e) {
 		
-			
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 	}
@@ -72,7 +85,7 @@ public class RestauranteController {
 		try {
 			
 			cadastroRestauranteService.excluir(id);			
-			return new ResponseEntity<Restaurante>(HttpStatus.OK);
+			return new ResponseEntity<Restaurante>(HttpStatus.NO_CONTENT);
 		} catch (EntidadeNaoEncontradaException e) {
 			
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

@@ -12,7 +12,7 @@ import com.algaworks.algafood.domain.model.Permissao;
 import com.algaworks.algafood.domain.repository.PermissaoRepository;
 
 @Component
-public class PermissaoRepositoyImpl implements PermissaoRepository {
+public class PermissaoRepositoryImpl implements PermissaoRepository {
 
 	@PersistenceContext
 	private EntityManager manager;
