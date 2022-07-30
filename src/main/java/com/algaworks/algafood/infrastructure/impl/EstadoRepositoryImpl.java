@@ -38,8 +38,8 @@ public class EstadoRepositoryImpl implements EstadoRepository {
 
 	@Transactional
 	@Override
-	public void remover(Estado estado) {
+	public void remover(Long id) {
 
-		manager.remove(buscar(estado.getId()));
+		manager.remove(buscar(id));
 	}
 }

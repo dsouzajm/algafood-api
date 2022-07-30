@@ -40,7 +40,7 @@ public class ConsultaEstadoMain {
 		
 		
 		estado1.setId(1L);
-		estadoRepository.remover(estado1);
+		estadoRepository.remover(estado1.getId());
 		
 		List<Estado> estados1 = estadoRepository.listar();
 		
