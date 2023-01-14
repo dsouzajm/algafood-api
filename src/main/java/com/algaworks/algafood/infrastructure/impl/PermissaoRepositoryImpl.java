@@ -10,8 +10,9 @@ import org.springframework.stereotype.Component;
 
 import com.algaworks.algafood.domain.model.Permissao;
 import com.algaworks.algafood.domain.repository.PermissaoRepository;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 public class PermissaoRepositoryImpl implements PermissaoRepository {
 
 	@PersistenceContext

@@ -30,9 +30,19 @@ public class Restaurante {
 	@Column(name = "taxa_frete", nullable = false)
 	@EqualsAndHashCode.Exclude
 	private BigDecimal taxaFrete;
-	
+
 	@ManyToOne(optional = false)
 	//@JoinColumn(name = "cozinha_id", nullable = false)
 	@EqualsAndHashCode.Exclude
 	private Cozinha cozinha;
+
+	@Override
+	public String toString() {
+		return "Restaurante{" +
+				"id=" + id +
+				", nome='" + nome + '\'' +
+				", taxaFrete=" + taxaFrete +
+				", cozinha=" + cozinha +
+				'}';
+	}
 }

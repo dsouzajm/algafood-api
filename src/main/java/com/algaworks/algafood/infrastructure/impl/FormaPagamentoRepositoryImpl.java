@@ -10,8 +10,9 @@ import org.springframework.stereotype.Component;
 
 import com.algaworks.algafood.domain.model.FormaPagamento;
 import com.algaworks.algafood.domain.repository.FormaPagamentoRepository;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 public class FormaPagamentoRepositoryImpl implements FormaPagamentoRepository {
 
 	@PersistenceContext

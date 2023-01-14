@@ -35,6 +35,11 @@ public class CadastroCozinhaService {
 		return null;
 	}
 
+	public List<Cozinha> buscarPorNome(String nome){
+
+		return cozinhaRepository.listarPorNome(nome);
+	}
+
 	public Cozinha salvar(Cozinha cozinha) {
 
 		Cozinha cozinhaSalva = cozinhaRepository.salvar(cozinha);
