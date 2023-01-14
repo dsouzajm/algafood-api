@@ -41,19 +41,16 @@ public class CadastroEstadoService {
 	public void excluir(Long id) {
 
 		try {			
+
 			estadoRepository.deleteById(id);
 			
 		} catch (DataIntegrityViolationException e) {
 
-			throw new EntidadeEmUsoException(
-				String.format("Estado de código %d não pode ser removido, pois está em uso.", id)				
-			);
+			throw new EntidadeEmUsoException(String.format("Estado de código %d não pode ser removido, pois está em uso.", id));
 			
 		} catch (IllegalArgumentException | EmptyResultDataAccessException e) {
 
-			throw new EntidadeNaoEncontradaException(
-				String.format("Não existe estado com o código %d.", id)			
-			);
+			throw new EntidadeNaoEncontradaException(String.format("Não existe estado com o código %d.", id));
 		} 
 	}
 }

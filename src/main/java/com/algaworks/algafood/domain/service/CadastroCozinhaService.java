@@ -43,8 +43,7 @@ public class CadastroCozinhaService {
 	public Cozinha atualizar(Long id, Cozinha cozinha) {
 
 		Cozinha cozinhaTarget = cozinhaRepository.findById(id)
-			.orElseThrow(() -> new EntidadeNaoEncontradaException(
-					String.format("Não existe cozinha com o código %d.", id)));
+												 .orElseThrow(() -> new EntidadeNaoEncontradaException(String.format("Não existe cozinha com o código %d.", id)));
 
 		BeanUtils.copyProperties(cozinha, cozinhaTarget, "id");
 		return cozinhaRepository.save(cozinhaTarget);
@@ -55,17 +54,14 @@ public class CadastroCozinhaService {
 		try {
 			
 			cozinhaRepository.deleteById(id);
+
 		} catch (DataIntegrityViolationException e) {
 
-			throw new EntidadeEmUsoException(
-				String.format("Cozinha de código %d não pode ser removida, pois está em uso.", id)				
-			);
+			throw new EntidadeEmUsoException(String.format("Cozinha de código %d não pode ser removida, pois está em uso.", id));
 			
 		} catch (EmptyResultDataAccessException e) {
 
-			throw new EntidadeNaoEncontradaException(
-				String.format("Não existe cozinha com o código %d.", id)			
-			);
+			throw new EntidadeNaoEncontradaException(String.format("Não existe cozinha com o código %d.", id));
 		} 
 	}
 }

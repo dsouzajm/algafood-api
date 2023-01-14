@@ -20,5 +20,4 @@ public class NotificacaoService {
 	public void clienteAtivadoListener(ClienteAtivadoEvent event) {
 		notificador.notificar(event.getCliente(), "Seu cadastro no sistema está ativo!");
 	}
-	
 }

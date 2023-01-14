@@ -102,8 +102,7 @@ public class RestauranteController {
 
 		try {
 			
-			return new ResponseEntity<Restaurante>(cadastroRestauranteService.salvar(restaurante),
-													HttpStatus.CREATED);
+			return new ResponseEntity<Restaurante>(cadastroRestauranteService.salvar(restaurante), HttpStatus.CREATED);
 
 		} catch (PropriedadeNaoEncontradaException e) {
 		
@@ -118,6 +117,7 @@ public class RestauranteController {
 			
 			cadastroRestauranteService.excluir(id);			
 			return new ResponseEntity<Restaurante>(HttpStatus.NO_CONTENT);
+			
 		} catch (EntidadeNaoEncontradaException e) {
 			
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());

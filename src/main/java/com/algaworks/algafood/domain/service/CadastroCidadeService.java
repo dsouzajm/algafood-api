@@ -32,8 +32,7 @@ public class CadastroCidadeService {
     public Cidade buscar(Long id){
 
         return cidadeRepository.findById(id)
-                                 .orElseThrow(() -> new EntidadeNaoEncontradaException(
-                                    String.format("Não existe cozinha com o código %d.", id)));
+                               .orElseThrow(() -> new EntidadeNaoEncontradaException(String.format("Não existe cozinha com o código %d.", id)));
     }
 
     public Cidade atualizar(Long id, Cidade cidade){
@@ -41,12 +40,10 @@ public class CadastroCidadeService {
         Long estadoId = cidade.getEstado().getId();
 
         Estado estadoTarget = estadoRepository.findById(estadoId)
-                                                .orElseThrow(() -> new PropriedadeNaoEncontradaException(
-                                                    String.format("Não existe estado com o código %d.", estadoId)));
+                                              .orElseThrow(() -> new PropriedadeNaoEncontradaException(String.format("Não existe estado com o código %d.", estadoId)));
 
         Cidade cidadeTarget = cidadeRepository.findById(id)
-                                                .orElseThrow(() -> new EntidadeNaoEncontradaException(
-                                                    String.format("Não existe cozinha com o código %d.", id)));
+                                              .orElseThrow(() -> new EntidadeNaoEncontradaException(String.format("Não existe cozinha com o código %d.", id)));
 
         BeanUtils.copyProperties(cidade, cidadeTarget, "id");
 
@@ -58,8 +55,7 @@ public class CadastroCidadeService {
         Long estadoId = cidade.getEstado().getId();
 
         Estado estadoTarget = estadoRepository.findById(estadoId)
-                                                .orElseThrow(() -> new EntidadeNaoEncontradaException(
-                                                    String.format("Não existe estado com o código %d.", estadoId)));
+                                              .orElseThrow(() -> new EntidadeNaoEncontradaException(String.format("Não existe estado com o código %d.", estadoId)));
 
         cidade.setEstado(estadoTarget);
 
@@ -74,9 +70,7 @@ public class CadastroCidadeService {
 
         } catch (EmptyResultDataAccessException e) {
 
-            throw new EntidadeNaoEncontradaException(
-                    String.format("Não existe cidade com o código %d.", id)
-                );
+            throw new EntidadeNaoEncontradaException(String.format("Não existe cidade com o código %d.", id));
         }
     }
 }
