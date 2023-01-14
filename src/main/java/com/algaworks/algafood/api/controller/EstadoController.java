@@ -56,10 +56,11 @@ public class EstadoController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> remover(@PathVariable Long id){
+	public ResponseEntity<?> excluir(@PathVariable Long id){
 		
 		try {
-			estadoService.remover(id);
+
+			estadoService.excluir(id);
 			return ResponseEntity.ok().build();
 			
 		} catch (EntidadeEmUsoException e) {

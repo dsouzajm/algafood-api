@@ -1,11 +1,15 @@
 package com.algaworks.algafood.domain.service;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
@@ -26,74 +30,58 @@ public class CadastroRestauranteService {
 	
 	public List<Restaurante> listar(){
 		
-		List<Restaurante> restaurantes = restauranteRepository.listar();
+		List<Restaurante> restaurantes = restauranteRepository.findAll();
 		
 		return restaurantes;
 	}
 
 	public Restaurante buscar(Long id) {
-		
-		Restaurante restaurante = restauranteRepository.buscar(id);
 
-		if(restaurante != null)
-			return restaurante;
-		
-		throw new EntidadeNaoEncontradaException(
-			String.format("Não existe restaurante com o código %d", id)
-		);
-				
+		return restauranteRepository.findById(id)
+				.orElseThrow(() -> new EntidadeNaoEncontradaException(
+						String.format("Não existe restaurante com o código %d", id)));
 	}
 
 	public Restaurante atualizar(Long id, Restaurante restaurante) {
 
-		Cozinha cozinha = cozinhaRepository.buscar(restaurante.getCozinha().getId());
-		
-		if(cozinha != null) {
-		
-			Restaurante restauranteTarget = restauranteRepository.buscar(id);
-			
-			if(restauranteTarget != null) {
-												
-				BeanUtils.copyProperties(restaurante, restauranteTarget, "id");
-				restauranteTarget.setCozinha(cozinha);
-				Restaurante restauranteSalvo = restauranteRepository.salvar(restauranteTarget);
-				return restauranteSalvo;
-			} else {
-				throw new EntidadeNaoEncontradaException(
-						String.format("Não existe restaurante com o código %d.", id)
-					);				
-			}
-			
-		} else {
-			
-			throw new PropriedadeNaoEncontradaException(
-					String.format("Não existe cozinha com o código %d.", restaurante.getCozinha().getId())
-				);
-		}		
+		Long cozinhaId = restaurante.getCozinha().getId();
+
+		Cozinha cozinhaTarget = cozinhaRepository.findById(cozinhaId)
+												.orElseThrow(() -> new PropriedadeNaoEncontradaException(
+													String.format("Não existe cozinha com o código %d.", cozinhaId)));
+
+		Restaurante restauranteTarget = restauranteRepository.findById(id)
+																.orElseThrow(() -> new EntidadeNaoEncontradaException(
+																		String.format("Não existe restaurante com o código %d.", id)
+																	));
+
+		BeanUtils.copyProperties(restaurante, restauranteTarget, "id");
+		restauranteTarget.setCozinha(cozinhaTarget);
+
+		return  restauranteRepository.save(restauranteTarget);
 	}
 	
-	public Restaurante adicionar(Restaurante restaurante) {
+	public Restaurante salvar(Restaurante restaurante) {
 
-		try {
-			
-			return restauranteRepository.salvar(restaurante);
-		} catch (EntityNotFoundException e) {
-			
-			throw new PropriedadeNaoEncontradaException(
-				String.format("Não existe um cadastro de cozinha com código %d", restaurante.getCozinha().getId())			
-			);			
-		}
+		Long cozinhaId = restaurante.getCozinha().getId();
+		Cozinha cozinhaTarget = cozinhaRepository.findById(cozinhaId)
+				.orElseThrow(() -> new PropriedadeNaoEncontradaException(
+						String.format("Não existe um cadastro de cozinha com código %d", cozinhaId)));
+
+		restaurante.setCozinha(cozinhaTarget);
+
+		return restauranteRepository.save(restaurante);
 	}
 	
 	public void excluir(Long id) {
 		
 		try {
 		
-			restauranteRepository.remover(buscar(id));
-		} catch (EntityNotFoundException | NullPointerException e) {
+			restauranteRepository.deleteById(id);
+		} catch (EmptyResultDataAccessException | NullPointerException e) {
 			
 			throw new EntidadeNaoEncontradaException(
-				String.format("Entidade restaraunte não encontrada! %d", id)
+				String.format("Entidade restaraunte não encontrada %d.", id)
 			);
 		}
 	}

@@ -98,12 +98,13 @@ public class RestauranteController {
 	}
 
 	@PostMapping
-	public ResponseEntity<?> adicionar(@RequestBody Restaurante restaurante) {
+	public ResponseEntity<?> salvar(@RequestBody Restaurante restaurante) {
 
 		try {
 			
-			return new ResponseEntity<Restaurante>(cadastroRestauranteService.adicionar(restaurante)
-					, HttpStatus.CREATED);						
+			return new ResponseEntity<Restaurante>(cadastroRestauranteService.salvar(restaurante),
+													HttpStatus.CREATED);
+
 		} catch (PropriedadeNaoEncontradaException e) {
 		
 			return ResponseEntity.badRequest().body(e.getMessage());
@@ -119,7 +120,7 @@ public class RestauranteController {
 			return new ResponseEntity<Restaurante>(HttpStatus.NO_CONTENT);
 		} catch (EntidadeNaoEncontradaException e) {
 			
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
 		}
 	}
 }

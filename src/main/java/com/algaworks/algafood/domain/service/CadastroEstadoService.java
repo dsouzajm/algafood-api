@@ -22,29 +22,26 @@ public class CadastroEstadoService {
 	
 	public List<Estado> listar(){
 		
-		return estadoRepository.listar();
+		return estadoRepository.findAll();
 	}
 
 	public Estado buscar(Long id) {
 		
-		Estado estado = estadoRepository.buscar(id);
-		
-		if(estado == null) {
-			throw new EntidadeNaoEncontradaException("Entidade de id " + id + " não encontrada.");
-		}		
+		Estado estado = estadoRepository.findById(id)
+										.orElseThrow(() -> new EntidadeNaoEncontradaException("Estado de id " + id + " não encontrado."));
 		
 		return estado;
 	}
 	
 	public Estado salvar(Estado estado) {
 		
-		return estadoRepository.salvar(estado);
+		return estadoRepository.save(estado);
 	}
 	
-	public void remover(Long id) {
+	public void excluir(Long id) {
 
 		try {			
-			estadoRepository.remover(id);
+			estadoRepository.deleteById(id);
 			
 		} catch (DataIntegrityViolationException e) {
 
@@ -59,5 +56,4 @@ public class CadastroEstadoService {
 			);
 		} 
 	}
-	
 }
