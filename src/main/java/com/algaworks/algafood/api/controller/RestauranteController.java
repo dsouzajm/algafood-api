@@ -116,7 +116,7 @@ public class RestauranteController {
 		try {
 			
 			cadastroRestauranteService.excluir(id);			
-			return new ResponseEntity<Restaurante>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<Restaurante>(HttpStatus.OK);
 			
 		} catch (EntidadeNaoEncontradaException e) {
 			
