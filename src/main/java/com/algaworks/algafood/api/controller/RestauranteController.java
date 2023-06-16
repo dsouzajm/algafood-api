@@ -27,8 +27,7 @@ public class RestauranteController {
 	@GetMapping
 	public ResponseEntity<List<Restaurante>> listar() {
 
-		return new ResponseEntity<List<Restaurante>>(cadastroRestauranteService.listar()
-				, HttpStatus.OK);		
+		return new ResponseEntity<List<Restaurante>>(cadastroRestauranteService.listar(), HttpStatus.OK);
 	}
 
 	@GetMapping("/{id}")
@@ -49,17 +48,13 @@ public class RestauranteController {
 	public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody Restaurante restaurante) {
 
 		try {
-			
-			return new ResponseEntity<Restaurante>(
-					cadastroRestauranteService.atualizar(id, restaurante)
-					, HttpStatus.OK);
-			
+
+			return new ResponseEntity<Restaurante>(cadastroRestauranteService.atualizar(id, restaurante), HttpStatus.OK);
 		} catch (PropriedadeNaoEncontradaException e) {
-			
+
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-			
 		} catch (EntidadeNaoEncontradaException e) {
-			
+
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());			
 		}
 	}

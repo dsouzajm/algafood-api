@@ -51,7 +51,6 @@ public class EstadoController {
 	public ResponseEntity<Estado> salvar(@RequestBody Estado estado){
 
 		Estado estadoSalvo = estadoService.salvar(estado);
-		
 		return ResponseEntity.status(HttpStatus.CREATED).body(estadoSalvo);		
 	}
 	

@@ -5,9 +5,15 @@ import java.util.Optional;
 
 import com.algaworks.algafood.domain.model.Cozinha;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 public interface CozinhaRepository extends JpaRepository<Cozinha, Long> {
-    public List<Cozinha> findTodasByNome(String nome);
+    @Query(" from Cozinha where nome like %:nome%")
+    public List<Cozinha> getCozinhaPorNome(String nome);
+
+    public List<Cozinha> findTodasByNomeContaining(String nome);
 
     public Optional<Cozinha> findUnicaByNome(String nome);
+
+    //public Optional<Cozinha> findById(Long id);
 }
