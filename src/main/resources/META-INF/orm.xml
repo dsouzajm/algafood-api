@@ -4,9 +4,9 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd"
         version="2.2">
-    
+
     <named-query name="Restaurante.getRestaurantes">
-        <query> from Restaurante where nome like %:nome and cozinha.id = :idCozinha </query>
+        <query> from Restaurante where nome like concat('%', :nome, '%') and cozinha.id = :idCozinha </query>
     </named-query>
 
 </entity-mappings>
