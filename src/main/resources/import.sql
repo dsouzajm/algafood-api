@@ -9,7 +9,7 @@ insert into restaurante (id, nome, taxa_frete, cozinha_id) values (1, 'Thay Food
 insert into restaurante (id, nome, taxa_frete, cozinha_id) values (2, 'Muay Taka Taka', 4.5, 1);
 insert into restaurante (id, nome, taxa_frete, cozinha_id) values (3, 'New Delhi', 2.5, 2);
 insert into restaurante (id, nome, taxa_frete, cozinha_id) values (4, 'Kama Food', 5.5, 2);
-insert into restaurante (id, nome, taxa_frete, cozinha_id) values (5, 'Jeca Tatu', 1.5, 3);
+insert into restaurante (id, nome, taxa_frete, cozinha_id) values (5, 'Jeca Tatu', 0, 3);
 insert into restaurante (id, nome, taxa_frete, cozinha_id) values (6, 'Fogo de Chão', 7.5, 3);
 insert into restaurante (id, nome, taxa_frete, cozinha_id) values (7, 'Va Bene', 2, 4);
 insert into restaurante (id, nome, taxa_frete, cozinha_id) values (8, 'Ragazzo', 2.8, 4);
