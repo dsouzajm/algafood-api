@@ -1,17 +1,13 @@
 package com.algaworks.algafood.api.controller;
 
-import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
-import com.algaworks.algafood.domain.exception.PropriedadeNaoEncontradaException;
-import com.algaworks.algafood.domain.model.Cidade;
 import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.model.Restaurante;
 import com.algaworks.algafood.domain.repository.CozinhaRepository;
 import com.algaworks.algafood.domain.repository.RestauranteRepository;
-import com.algaworks.algafood.domain.service.CadastroCidadeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -43,6 +39,12 @@ public class TesteController {
     public List<Restaurante> restaurantePorTaxas(BigDecimal taxaInicial, BigDecimal taxaFinal){
 
         return restauranteRepository.findByTaxaFreteBetween(taxaInicial, taxaFinal);
+    }
+
+    @GetMapping("/restaurantes/ipor-nome-e-frete")
+    public List<Restaurante> restaurantesPorNomesFrete(String nome, BigDecimal taxaInicial, BigDecimal taxaFinal){
+
+        return restauranteRepository.find(nome, taxaInicial, taxaFinal);
     }
 
     @GetMapping("/restaurantes/por-nome")
