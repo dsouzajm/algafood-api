@@ -13,9 +13,6 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
-import static com.algaworks.algafood.infrastructure.spec.RestauranteBuilderSpec.comFreteGratis;
-import static com.algaworks.algafood.infrastructure.spec.RestauranteBuilderSpec.comNomeSemelhante;
-
 @RestController
 @RequestMapping("/teste")
 public class TesteController {
@@ -58,6 +55,6 @@ public class TesteController {
     @GetMapping("/restaurantes/com-frete-gratis")
     public List<Restaurante> restaurantesComFreteGratis(String nome){
 
-        return restauranteRepository.findAll(comFreteGratis().and(comNomeSemelhante(nome)));
+        return restauranteRepository.findRestauranteComFreteGratis(nome);
     }
 }
