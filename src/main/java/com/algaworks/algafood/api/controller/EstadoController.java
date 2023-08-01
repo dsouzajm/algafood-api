@@ -29,20 +29,16 @@ public class EstadoController {
 
 	@GetMapping
 	public List<Estado> listar() {
-		
 		return estadoService.listar();
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> buscar(@PathVariable Long id) {
-		
 		try {
-			
 			Estado estado = estadoService.buscar(id);
 			return  ResponseEntity.ok(estado);
 			
 		} catch (EntidadeNaoEncontradaException e) {
-			
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());			
 		}				
 	}
@@ -56,18 +52,14 @@ public class EstadoController {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> excluir(@PathVariable Long id){
-		
 		try {
-
 			estadoService.excluir(id);
 			return ResponseEntity.ok().build();
 			
 		} catch (EntidadeEmUsoException e) {
-			
 			return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-			
+
 		} catch (EntidadeNaoEncontradaException e) {
-		
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
 		}				
 	}
