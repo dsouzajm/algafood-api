@@ -83,3 +83,23 @@ insert into cidade (id, nome, estado_id) values (25, 'Fortaleza', 25);
 insert into cidade (id, nome, estado_id) values (26, 'Teresina', 26);
 insert into cidade (id, nome, estado_id) values (27, 'Maceió', 27);
 
+insert into restaurante_forma_pagamento values (1,1);
+insert into restaurante_forma_pagamento values (1,2);
+insert into restaurante_forma_pagamento values (2,2);
+insert into restaurante_forma_pagamento values (2,3);
+insert into restaurante_forma_pagamento values (3,1);
+insert into restaurante_forma_pagamento values (3,3);
+insert into restaurante_forma_pagamento values (4,1);
+insert into restaurante_forma_pagamento values (4,2);
+insert into restaurante_forma_pagamento values (4,3);
+insert into restaurante_forma_pagamento values (5,3);
+insert into restaurante_forma_pagamento values (6,3);
+insert into restaurante_forma_pagamento values (7,3);
+insert into restaurante_forma_pagamento values (8,3);
+insert into restaurante_forma_pagamento values (9,3);
+insert into restaurante_forma_pagamento values (10,3);
+insert into restaurante_forma_pagamento values (11,3);
+insert into restaurante_forma_pagamento values (12,3);
+insert into restaurante_forma_pagamento values (13,3);
+insert into restaurante_forma_pagamento values (14,3);
+

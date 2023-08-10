@@ -1,13 +1,10 @@
 package com.algaworks.algafood.domain.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -32,9 +29,18 @@ public class Restaurante {
 	private BigDecimal taxaFrete;
 
 	@ManyToOne(optional = false)
-	//@JoinColumn(name = "cozinha_id", nullable = false)
+	@JoinColumn(name = "cozinha_id", nullable = false)
 	@EqualsAndHashCode.Exclude
 	private Cozinha cozinha;
+
+	@ManyToMany
+	@JoinTable(name = "restaurante_forma_pagamento",
+			   joinColumns = @JoinColumn(name = "restaurante_id"),
+			   inverseJoinColumns = @JoinColumn(name = "forma_pagamento_id"))
+	private List<FormaPagamento> formaPagamento = new ArrayList<>();
+
+	@Embedded
+	private Endereco endereco;
 
 	@Override
 	public String toString() {
