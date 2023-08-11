@@ -1,32 +1,3 @@
-insert into cozinha (nome) values ('Tailandesa');
-insert into cozinha (nome) values ('Indiana');
-insert into cozinha (nome) values ('Brasileira');
-insert into cozinha (nome) values ('Italiana');
-insert into cozinha (nome) values ('Espanhola');
-insert into cozinha (nome) values ('Portuguesa');
-
-insert into restaurante (id, nome, taxa_frete, cozinha_id) values (1, 'Thay Food', 3.5, 1);
-insert into restaurante (id, nome, taxa_frete, cozinha_id) values (2, 'Muay Taka Taka', 4.5, 1);
-insert into restaurante (id, nome, taxa_frete, cozinha_id) values (3, 'New Delhi', 2.5, 2);
-insert into restaurante (id, nome, taxa_frete, cozinha_id) values (4, 'Kama Food', 5.5, 2);
-insert into restaurante (id, nome, taxa_frete, cozinha_id) values (5, 'Jeca Tatu', 0, 3);
-insert into restaurante (id, nome, taxa_frete, cozinha_id) values (6, 'Fogo de Chão', 7.5, 3);
-insert into restaurante (id, nome, taxa_frete, cozinha_id) values (7, 'Va Bene', 2, 4);
-insert into restaurante (id, nome, taxa_frete, cozinha_id) values (8, 'Ragazzo', 2.8, 4);
-insert into restaurante (id, nome, taxa_frete, cozinha_id) values (9, 'Questro', 2.53, 4);
-insert into restaurante (id, nome, taxa_frete, cozinha_id) values (10, 'La Furia', 2.59, 5);
-insert into restaurante (id, nome, taxa_frete, cozinha_id) values (11, 'Roja', 5.50, 5);
-insert into restaurante (id, nome, taxa_frete, cozinha_id) values (12, 'Belem', 7.5, 6);
-insert into restaurante (id, nome, taxa_frete, cozinha_id) values (13, 'Navegantes', 8.5, 6);
-insert into restaurante (id, nome, taxa_frete, cozinha_id) values (14, 'Madeira Cruz', 9.5, 6);
-
-insert into forma_pagamento (id, descricao) values (1, 'Pix');
-insert into forma_pagamento (id, descricao) values (2, 'Débito');
-insert into forma_pagamento (id, descricao) values (3, 'Crédito');
-
-insert into permissao (id, nome, descricao) values (1, 'Permissao incluida por script 1', 'Desc Permissao incluida por script 1');
-insert into permissao (id, nome, descricao) values (2, 'Permissao incluida por script 2', 'Desc Permissao incluida por script 2');
-
 insert into estado (id, nome) values (1, 'São Paulo');
 insert into estado (id, nome) values (2, 'Rio de Janeiro');
 insert into estado (id, nome) values (3, 'Bahia');
@@ -82,6 +53,35 @@ insert into cidade (id, nome, estado_id) values (24, 'Belém', 24);
 insert into cidade (id, nome, estado_id) values (25, 'Fortaleza', 25);
 insert into cidade (id, nome, estado_id) values (26, 'Teresina', 26);
 insert into cidade (id, nome, estado_id) values (27, 'Maceió', 27);
+
+insert into cozinha (nome) values ('Tailandesa');
+insert into cozinha (nome) values ('Indiana');
+insert into cozinha (nome) values ('Brasileira');
+insert into cozinha (nome) values ('Italiana');
+insert into cozinha (nome) values ('Espanhola');
+insert into cozinha (nome) values ('Portuguesa');
+
+insert into restaurante (id, nome, taxa_frete, cozinha_id, endereco_cep, endereco_complemento, endereco_logradouro, endereco_numero, endereco_cidade_id, data_cadastro, data_atualizacao) values (1, 'Thay Food', 3.5, 1, '02100-000', 'apto 1', 'Rua do Marco Zero', '2', 1, utc_timestamp(6), utc_timestamp(6));
+insert into restaurante (id, nome, taxa_frete, cozinha_id, endereco_cep, endereco_complemento, endereco_logradouro, endereco_numero, endereco_cidade_id, data_cadastro, data_atualizacao) values (2, 'Muay Taka Taka', 4.5, 1, '02200-000', 'apto 12', 'Rua do Paraiso', '2', 2, utc_timestamp(6), utc_timestamp(6));
+insert into restaurante (id, nome, taxa_frete, cozinha_id, endereco_cep, endereco_complemento, endereco_logradouro, endereco_numero, endereco_cidade_id, data_cadastro, data_atualizacao) values (3, 'New Delhi', 2.5, 2, '02300-000', 'apto 21', 'Rua das Estrelas', '2', 3, utc_timestamp(6), utc_timestamp(6));
+insert into restaurante (id, nome, taxa_frete, cozinha_id, endereco_cep, endereco_complemento, endereco_logradouro, endereco_numero, endereco_cidade_id, data_cadastro, data_atualizacao) values (4, 'Kama Food', 5.5, 2, '02400-000', 'apto 31', 'Rua da Paz', '2', 4, utc_timestamp(6), utc_timestamp(6));
+insert into restaurante (id, nome, taxa_frete, cozinha_id, endereco_cep, endereco_complemento, endereco_logradouro, endereco_numero, endereco_cidade_id, data_cadastro, data_atualizacao) values (5, 'Jeca Tatu', 0, 3, '02500-000', 'apto 41', 'Rua do Marco Zero', '2', 7, utc_timestamp(6), utc_timestamp(6));
+insert into restaurante (id, nome, taxa_frete, cozinha_id, endereco_cep, endereco_complemento, endereco_logradouro, endereco_numero, endereco_cidade_id, data_cadastro, data_atualizacao) values (6, 'Fogo de Chão', 7.5, 3, '02000-000', 'apto 21', 'Rua do Marco Zero', '2', 2, utc_timestamp(6), utc_timestamp(6));
+insert into restaurante (id, nome, taxa_frete, cozinha_id, endereco_cep, endereco_complemento, endereco_logradouro, endereco_numero, endereco_cidade_id, data_cadastro, data_atualizacao) values (7, 'Va Bene', 2, 4, '01100-000', 'apto 18', 'Rua do Marco Zero', '2', 5, utc_timestamp(6), utc_timestamp(6));
+insert into restaurante (id, nome, taxa_frete, cozinha_id, endereco_cep, endereco_complemento, endereco_logradouro, endereco_numero, endereco_cidade_id, data_cadastro, data_atualizacao) values (8, 'Ragazzo', 2.8, 4, '00100-000', 'apto 19', 'Rua do Marco Zero', '2', 7, utc_timestamp(6), utc_timestamp(6));
+insert into restaurante (id, nome, taxa_frete, cozinha_id, endereco_cep, endereco_complemento, endereco_logradouro, endereco_numero, endereco_cidade_id, data_cadastro, data_atualizacao) values (9, 'Questro', 2.53, 4, '04100-000', 'apto 123', 'Rua do Marco Zero', '2', 8, utc_timestamp(6), utc_timestamp(6));
+insert into restaurante (id, nome, taxa_frete, cozinha_id, endereco_cep, endereco_complemento, endereco_logradouro, endereco_numero, endereco_cidade_id, data_cadastro, data_atualizacao) values (10, 'La Furia', 2.59, 5, '05100-000', 'apto 13', 'Rua do Marco Zero', '2', 9, utc_timestamp(6), utc_timestamp(6));
+insert into restaurante (id, nome, taxa_frete, cozinha_id, endereco_cep, endereco_complemento, endereco_logradouro, endereco_numero, endereco_cidade_id, data_cadastro, data_atualizacao) values (11, 'Roja', 5.50, 5, '06100-000', 'apto 14', 'Rua do Marco Zero', '2', 2, utc_timestamp(6), utc_timestamp(6));
+insert into restaurante (id, nome, taxa_frete, cozinha_id, endereco_cep, endereco_complemento, endereco_logradouro, endereco_numero, endereco_cidade_id, data_cadastro, data_atualizacao) values (12, 'Belem', 7.5, 6, '07100-000', 'apto 17', 'Rua do Marco Zero', '2', 2, utc_timestamp(6), utc_timestamp(6));
+insert into restaurante (id, nome, taxa_frete, cozinha_id, endereco_cep, endereco_complemento, endereco_logradouro, endereco_numero, endereco_cidade_id, data_cadastro, data_atualizacao) values (13, 'Navegantes', 8.5, 6, '08100-000', 'apto 14', 'Rua do Marco Zero', '2', 1, utc_timestamp(6), utc_timestamp(6));
+insert into restaurante (id, nome, taxa_frete, cozinha_id, endereco_cep, endereco_complemento, endereco_logradouro, endereco_numero, endereco_cidade_id, data_cadastro, data_atualizacao) values (14, 'Madeira Cruz', 9.5, 6, '09100-000', 'apto 14', 'Rua do Marco Zero', '2', 1, utc_timestamp(6), utc_timestamp(6));
+
+insert into forma_pagamento (id, descricao) values (1, 'Pix');
+insert into forma_pagamento (id, descricao) values (2, 'Débito');
+insert into forma_pagamento (id, descricao) values (3, 'Crédito');
+
+insert into permissao (id, nome, descricao) values (1, 'Permissao incluida por script 1', 'Desc Permissao incluida por script 1');
+insert into permissao (id, nome, descricao) values (2, 'Permissao incluida por script 2', 'Desc Permissao incluida por script 2');
 
 insert into restaurante_forma_pagamento values (1,1);
 insert into restaurante_forma_pagamento values (1,2);
