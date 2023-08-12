@@ -1,6 +1,8 @@
-package com.algaworks.algafood.domain.repository;
+package com.algaworks.algafood.infrastructure.impl;
 
 import com.algaworks.algafood.domain.model.Restaurante;
+import com.algaworks.algafood.domain.repository.CustomizedRestauranteRepository;
+import com.algaworks.algafood.domain.repository.RestauranteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;

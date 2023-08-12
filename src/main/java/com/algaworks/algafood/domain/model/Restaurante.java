@@ -1,10 +1,8 @@
 package com.algaworks.algafood.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -14,29 +12,24 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@ToString
 @Entity
+@Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Restaurante {
 
-	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@EqualsAndHashCode.Include
 	private Long id;
 
-	@EqualsAndHashCode.Exclude
 	@Column(nullable = false)
 	private String nome;
 	
 	@Column(name = "taxa_frete", nullable = false)
-	@EqualsAndHashCode.Exclude
 	private BigDecimal taxaFrete;
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "cozinha_id", nullable = false)
-	@EqualsAndHashCode.Exclude
 	private Cozinha cozinha;
 
 	@JsonIgnore
@@ -59,4 +52,8 @@ public class Restaurante {
 			   joinColumns = @JoinColumn(name = "restaurante_id"),
 			   inverseJoinColumns = @JoinColumn(name = "forma_pagamento_id"))
 	private List<FormaPagamento> formaPagamento = new ArrayList<>();
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "restaurante")
+	private List<Produto> produtos = new ArrayList<>();
 }

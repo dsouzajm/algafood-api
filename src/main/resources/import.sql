@@ -80,8 +80,7 @@ insert into forma_pagamento (id, descricao) values (1, 'Pix');
 insert into forma_pagamento (id, descricao) values (2, 'Débito');
 insert into forma_pagamento (id, descricao) values (3, 'Crédito');
 
-insert into permissao (id, nome, descricao) values (1, 'Permissao incluida por script 1', 'Desc Permissao incluida por script 1');
-insert into permissao (id, nome, descricao) values (2, 'Permissao incluida por script 2', 'Desc Permissao incluida por script 2');
+insert into produto (id, nome, descricao, preco, ativo, restaurante_id) values (1, 'Picanha', 'Embalagem contendo 1 kg de picanha', 100.0, true, 1);
 
 insert into restaurante_forma_pagamento values (1,1);
 insert into restaurante_forma_pagamento values (1,2);
@@ -103,3 +102,16 @@ insert into restaurante_forma_pagamento values (12,3);
 insert into restaurante_forma_pagamento values (13,3);
 insert into restaurante_forma_pagamento values (14,3);
 
+insert into permissao (id, nome, descricao) values (1, 'Permissao incluida por script 1', 'Desc Permissao incluida por script 1');
+insert into permissao (id, nome, descricao) values (2, 'Permissao incluida por script 2', 'Desc Permissao incluida por script 2');
+
+insert into grupo (id, nome) values (1, "Grupo 1");
+insert into grupo (id, nome) values (2, "Grupo 2");
+insert into grupo_permissao (grupo_id, permissao_id) values (1, 1);
+
+insert into usuario (id, nome, email, senha, data_cadastro) values (1, "usuario1", "usuario1@gmail.com", "123", utc_timestamp(6))
+insert into usuario (id, nome, email, senha, data_cadastro) values (2, "usuario2", "usuario2@gmail.com", "234", utc_timestamp(6))
+
+insert into usuario_grupo (usuario_id, grupo_id) values (1, 1);
+insert into usuario_grupo (usuario_id, grupo_id) values (2, 1);
+insert into usuario_grupo (usuario_id, grupo_id) values (2, 2);

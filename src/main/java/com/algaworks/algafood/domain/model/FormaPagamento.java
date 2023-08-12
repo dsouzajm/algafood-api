@@ -1,27 +1,19 @@
 package com.algaworks.algafood.domain.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
 
+import javax.persistence.*;
 @Entity
-//@Table(name = "formaPagamento1")
-@Getter
-@Setter
-@EqualsAndHashCode
+@Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class FormaPagamento {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@EqualsAndHashCode.Include
 	private Long id;
-	
-	@EqualsAndHashCode.Exclude
+
 	@Column(nullable = false)
 	private String descricao;
 }
