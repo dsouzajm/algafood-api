@@ -13,7 +13,6 @@ import lombok.NonNull;
 //@JacksonXmlRootElement(localName = "cozinhas")
 @Data
 public class CozinhaWrapperXML {
-
 	//@JacksonXmlProperty(localName = "cozinha")
 	//@JacksonXmlElementWrapper(useWrapping = false)
 	@NonNull

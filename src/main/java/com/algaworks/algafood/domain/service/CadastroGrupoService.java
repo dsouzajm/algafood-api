@@ -9,10 +9,8 @@ import java.util.List;
 
 @Service
 public class CadastroGrupoService {
-
     @Autowired
     private GrupoRepository grupoRepository;
-
     public List<Grupo> listar(){
         return grupoRepository.findAll();
     }

@@ -10,10 +10,8 @@ import javax.persistence.criteria.Root;
 import java.math.BigDecimal;
 
 public class RestauranteComFreteGratisSpec implements Specification<Restaurante> {
-
     @Override
     public Predicate toPredicate(Root<Restaurante> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-
         return criteriaBuilder.equal(root.get("taxaFrete"), BigDecimal.ZERO);
     }
 }

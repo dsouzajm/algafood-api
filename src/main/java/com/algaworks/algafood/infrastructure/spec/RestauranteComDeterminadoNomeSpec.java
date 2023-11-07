@@ -11,12 +11,9 @@ import javax.persistence.criteria.Root;
 
 @AllArgsConstructor
 public class RestauranteComDeterminadoNomeSpec implements Specification<Restaurante> {
-
     private String nome;
-
     @Override
     public Predicate toPredicate(Root<Restaurante> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-
         return criteriaBuilder.like(root.get("nome"), "%" + nome + "%");
     }
 }

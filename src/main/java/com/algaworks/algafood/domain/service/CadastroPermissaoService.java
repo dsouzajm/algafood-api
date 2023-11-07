@@ -9,10 +9,8 @@ import java.util.List;
 
 @Service
 public class CadastroPermissaoService {
-
     @Autowired
     private PermissaoRepository permissaoRepository;
-
     public List<Permissao> listar(){
         return permissaoRepository.listar();
     }

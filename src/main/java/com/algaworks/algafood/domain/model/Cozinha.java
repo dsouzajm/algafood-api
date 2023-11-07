@@ -10,15 +10,12 @@ import javax.persistence.*;
 @Entity
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-//@JacksonXmlRootElement(localName = "cozinha")
 public class Cozinha {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@EqualsAndHashCode.Include
 	private Long id;
 
-	//@JsonProperty("titulo")
 	@Column(nullable = false)
 	private String nome;
 }

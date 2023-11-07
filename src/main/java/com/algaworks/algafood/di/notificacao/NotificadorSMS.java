@@ -7,13 +7,11 @@ import com.algaworks.algafood.di.modelo.Cliente;
 @TipoDoNotificador(NivelUrgencia.URGENTE)
 @Component
 public class NotificadorSMS implements INotificador{
-	
 	@Override
 	public void notificar(Cliente cliente, String mensagem) {
-				
-		System.out.printf("Notificando cliente %s por meio de SMS %s: %s\n"
-							, cliente.getNome()
-							, cliente.getTelefone()
-							, mensagem);
+		System.out.printf("Notificando cliente %s por meio de SMS %s: %s\n",
+							cliente.getNome(),
+							cliente.getTelefone(),
+							mensagem);
 	}
 }

@@ -11,11 +11,9 @@ import com.algaworks.algafood.di.service.ClienteAtivadoEvent;
 
 @Component
 public class NotificacaoService {
-
 	@TipoDoNotificador(NivelUrgencia.SEM_URGENCIA)
 	@Autowired
 	private INotificador notificador;
-
 	@EventListener
 	public void clienteAtivadoListener(ClienteAtivadoEvent event) {
 		notificador.notificar(event.getCliente(), "Seu cadastro no sistema está ativo!");

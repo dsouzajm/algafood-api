@@ -9,10 +9,8 @@ import java.util.List;
 
 @Service
 public class CadastroUsuarioService {
-
     @Autowired
     private UsuarioRepository usuarioRepository;
-
     public List<Usuario> listar(){
         return usuarioRepository.findAll();
     }

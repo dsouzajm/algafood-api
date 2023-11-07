@@ -15,24 +15,18 @@ import java.util.List;
 
 @Service
 public class CadastroRestauranteService {
-
 	@Autowired
 	private RestauranteRepository restauranteRepository;
-	
 	@Autowired
 	private CozinhaRepository cozinhaRepository;	
-	
 	public List<Restaurante> listar(){
 		return restauranteRepository.findAll();
 	}
-
 	public Restaurante buscar(Long id) {
 		return restauranteRepository.findById(id)
 									.orElseThrow(() -> new EntidadeNaoEncontradaException(String.format("Não existe restaurante com o código %d", id)));
 	}
-
 	public Restaurante atualizar(Long id, Restaurante restaurante) {
-
 		Long cozinhaId = restaurante.getCozinha().getId();
 		Cozinha cozinhaTarget = cozinhaRepository.findById(cozinhaId)
 												 .orElseThrow(() -> new PropriedadeNaoEncontradaException(String.format("Não existe cozinha com o código %d.", cozinhaId)));
@@ -42,7 +36,6 @@ public class CadastroRestauranteService {
 		restauranteTarget.setCozinha(cozinhaTarget);
 		return  restauranteRepository.save(restauranteTarget);
 	}
-	
 	public Restaurante salvar(Restaurante restaurante) {
 		Long cozinhaId = restaurante.getCozinha().getId();
 		Cozinha cozinhaTarget = cozinhaRepository.findById(cozinhaId)
@@ -50,7 +43,6 @@ public class CadastroRestauranteService {
 		restaurante.setCozinha(cozinhaTarget);
 		return restauranteRepository.save(restaurante);
 	}
-	
 	public void excluir(Long id) {
 		try {
 			restauranteRepository.deleteById(id);

@@ -6,8 +6,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface CustomizedRestauranteRepository {
-
     public List<Restaurante> find(String nome, BigDecimal taxaFreteInicial, BigDecimal taxaFreteFinal);
-
     public List<Restaurante> findRestauranteComFreteGratis(String nome);
 }

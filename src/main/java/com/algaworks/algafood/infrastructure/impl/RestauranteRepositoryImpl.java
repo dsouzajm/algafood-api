@@ -24,43 +24,31 @@ import static com.algaworks.algafood.infrastructure.spec.RestauranteBuilderSpec.
 
 @Repository
 public class RestauranteRepositoryImpl implements CustomizedRestauranteRepository {
-
     @PersistenceContext
     EntityManager entityManager;
-
     @Autowired @Lazy
     RestauranteRepository restauranteRepository;
-
     @Override
     public List<Restaurante> find(String nome, BigDecimal taxaFreteInicial, BigDecimal taxaFreteFinal) {
-
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Restaurante> criteriaQuery = criteriaBuilder.createQuery(Restaurante.class);
         Root<Restaurante> root = criteriaQuery.from(Restaurante.class);
         ArrayList<Predicate> predicates = new ArrayList<>();
-
         if(StringUtils.hasLength(nome)){
             predicates.add(criteriaBuilder.like(root.get("nome"), "%" + nome + "%"));
         }
-
         if(taxaFreteInicial != null) {
             predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("taxaFrete"), taxaFreteInicial));
         }
-
         if(taxaFreteFinal != null) {
             predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("taxaFrete"), taxaFreteFinal));
         }
-
         criteriaQuery.where(predicates.stream().toArray(Predicate[] ::new));
         TypedQuery<Restaurante> query = entityManager.createQuery(criteriaQuery);
-
         return query.getResultList();
     }
-
     @Override
     public List<Restaurante> findRestauranteComFreteGratis(String nome) {
-
         return restauranteRepository.findAll(comFreteGratis().and(comNomeSemelhante(nome)));
     }
-
 }

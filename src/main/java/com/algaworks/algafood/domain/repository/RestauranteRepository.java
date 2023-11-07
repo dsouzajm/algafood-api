@@ -13,10 +13,7 @@ import java.util.List;
 public interface RestauranteRepository extends CustomJpaRepository<Restaurante, Long>, CustomizedRestauranteRepository, JpaSpecificationExecutor<Restaurante> {
     @Query("from Restaurante r join fetch r.cozinha join fetch r.formaPagamento")
     public List<Restaurante> findAll();
-
     public List<Restaurante> findByTaxaFreteBetween(BigDecimal taxaInicial, BigDecimal taxaFinal);
-
     public List<Restaurante> getRestaurantes(String nome, @Param("idCozinha") Long cozinhaId);
-
     public List<Restaurante> findByNomeContainingAndCozinhaId(String nome, Long cozinha);
 }

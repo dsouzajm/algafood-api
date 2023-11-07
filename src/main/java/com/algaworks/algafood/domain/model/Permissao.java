@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Permissao {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@EqualsAndHashCode.Include
@@ -17,7 +16,6 @@ public class Permissao {
 
 	@Column(nullable = false)
 	private String nome;
-	
 	@Column(length = 500, nullable = false)
 	private String descricao;
 }
